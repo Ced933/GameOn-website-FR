@@ -14,7 +14,7 @@ body {
   margin: 0;
   display: flex;
   flex-direction: column;
-  background-image: url("background.png");
+  /* background-image: url("background.png"); */
   font-family: var(--font-default);
   font-size: 18px;
   max-width: 1300px;
@@ -68,11 +68,15 @@ img {
   display: none;
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 1096px) {
   .topnav a {display: none;}
   .topnav a.icon {
     float: right;
     display: block;
+  }
+  .hero-headline {
+    font-size:50px!important;
+    
   }
 }
 
@@ -97,7 +101,7 @@ img {
   .topnav a.icon {
     float: right;
     display: block;
-    margin-top: -15px;
+    /* margin-top: -15px; */
   }
 } 
 
@@ -207,6 +211,10 @@ input {
   border-radius: 8px;
   font-size: 20px;
   height: 48px;
+}
+#error-message-name{
+  color: #f00;
+  font-size: 13px;
 }
 .formData[data-error]::after {
   content: attr(data-error);
@@ -495,7 +503,7 @@ footer {
     display: none;
   }
   .hero-headline {
-    font-size: 4.5rem;
+    font-size: 3rem;
     white-space: normal;
   }
   .hero-text {
