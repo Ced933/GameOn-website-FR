@@ -28,12 +28,8 @@ const messageEmail = document.querySelector("#message-3");
 const close = document.querySelector(".close");
 
 
+// let mindate = new Date(-8640000000000000)
 
-let regex =/^([^0-9]*)$/;
-let result = regex.test(firstName);
-let resultlastName = regex.test(lastName);
-let regexEmail = /[a-z-A-Z]+@+[a-z-A-Z]+.+[a-z-A-Z]/g;
-let resultEmail = regex.test(email);
 // launch modal event
 modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
 
@@ -47,61 +43,55 @@ function quitModal() {
 }
 // Pour enlever le comportement par defautl du button submit 
 myForm.addEventListener('submit', function(e){
+let regex = /^[a-zA-Z-\s]+$/;
+// j'autorise les lettre en minuscule en majuscule les tirets et les espace répété plusieur fois
+// let result = regex.test(firstName);
+
+let regexEmail = /[a-z-A-Z0-9]+@+[a-z-A-Z0-9]+.+[a-z-A-Z]/g;
+// let resultEmail = regexEmail.test(email);
+
+
+
 // condition firstName ----------------------------------------------------
-    if(result){
+    if(regex.test(firstName.value) == false){
       e.preventDefault();
-      message.textContent = 'Les chiffres sont interdit';
-      message.classList.add("error-message-name");
-      
+      message.textContent = 'Les chiffres et les caractère spéciaux sont interdit';
+      message.classList.add("error-message-name"); 
 }
  
-    if(firstName.value.length < 2){
+    if(firstName.value.trim() === '' || firstName.value.length < 2 ){
+      // si la valeur de l'input est = à vide en retirant les espaces trim() ..  
      e.preventDefault(); 
-    message.textContent = 'Deux lettres minimum';
+    message.textContent = 'Remplir le champs, deux lettres minimum';
     message.classList.add("error-message-name");
     
 }
- if(firstName.value === ''){
-    
-    e.preventDefault();
-    message.textContent = 'Le champs est vide';
-    message.classList.add("error-message-name");
-  }
+
 // condition lastName -----------------------------------------------------------
 
-  if(resultlastName){
-    e.preventDefault();
-    messageLastName.textContent = 'Les chiffres sont interdit';
-    messageLastName.classList.add("error-message-name");
-    
- }
-
-  if(lastName.value.length < 2){
-   e.preventDefault(); 
-   messageLastName.textContent = 'Deux lettres minimum';
-   messageLastName.classList.add("error-message-name");
-  
-}
-if(lastName.value === ''){
-    
+if(regex.test(lastName.value) == false){
   e.preventDefault();
-  messageLastName.textContent = 'Le champs est vide';
-  messageLastName.classList.add("error-message-name");
+  messageLastName.textContent = 'Les chiffres et les caractère spéciaux sont interdit';
+  messageLastName.classList.add("error-message-name"); 
 }
 
-// Email condition ----------------------------------------------------------------
-if(resultEmail){
+if(lastName.value.trim() === '' || lastName.value.length < 2 ){
+  // si la valeur de l'input est = à vide en retirant les espaces trim() ..  
+ e.preventDefault(); 
+ messageLastName.textContent = 'Remplir le champs, deux lettres minimum';
+ messageLastName.classList.add("error-message-name");
+
+}
+// // Email condition ----------------------------------------------------------------
+
+if(regexEmail.test(email.value) == false){
   e.preventDefault();
   messageEmail.textContent = "Ceci n'est pas une adresse email";
   messageEmail.classList.add("error-message-name");
   
 }
-if(email.value === ''){
-    
-  e.preventDefault();
-  messageEmail.textContent = 'Le champs est vide';
-  messageEmail.classList.add("error-message-name");
-}
+
+
 });
  
 
