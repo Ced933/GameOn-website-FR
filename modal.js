@@ -27,8 +27,30 @@ const messageLastName = document.querySelector("#message-2");
 const messageEmail = document.querySelector("#message-3");
 const close = document.querySelector(".close");
 
+let date = document.querySelector("#birthdate");
+// permet d'avoir la date
+let dateNow = new Date();
+// permet d'avoir la date par jour (en chiffre et nombre) 
+let day = dateNow.getDate();
+// permet d'avoir la date par mois (en chiffre et nombre) janvier etant l'index 0 on mettra +1 pour que cellaa affiche les mois de 1 à 12 
+let month = dateNow.getMonth()+ 1;
+// permet d'avoir les années (en nombre)
+let year = dateNow.getFullYear();
+// vu que le calendrier prend en compte deux chiffre même s'il y a un mois ou un jour en dessou de la dixaine on rajoutera une condition 
+// qui dira si jour ou mois est inférieur à 10 alors tu me mettra un 0 pour pouvoir avoir 2 chiffre 
+if(day < 10){
+  day ='0'+ day;
+}
 
-// let mindate = new Date(-8640000000000000)
+if(month < 10){
+  month ='0'+ month;
+}
+// on cree une variable fulldate avec toutes les variable 
+let Fulldate = year + "-" + month + "-"+ day; 
+// console.log(date.getAttribute("max"));
+// settAttribute prend 2 paramettre l'attribut qu'on veut cibler et la valeur par laquelle on veut remplacer  
+date.setAttribute("max", Fulldate);
+
 
 // launch modal event
 modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
@@ -49,6 +71,7 @@ let regex = /^[a-zA-Z-\s]+$/;
 
 let regexEmail = /[a-z-A-Z0-9]+@+[a-z-A-Z0-9]+.+[a-z-A-Z]/g;
 // let resultEmail = regexEmail.test(email);
+
 
 
 
