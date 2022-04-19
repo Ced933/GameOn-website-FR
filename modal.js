@@ -60,6 +60,7 @@ let cg = document.querySelector('#location4');
 let bo = document.querySelector('#location5');
 let po = document.querySelector('#location6');
 
+let checkbox = document.querySelector('#checkbox1');
 
 
 
@@ -122,7 +123,7 @@ if(regexEmail.test(email.value) == false){
   messageEmail.classList.add("error-message-name");
   
 }
-// Checkbox condition ------------------------------------------------
+// Radiobox condition ------------------------------------------------
 
 if( !nyc.checked && sf.checked === false && se.checked === false && cg.checked === false && bo.checked === false && po.checked === false){
  
@@ -130,6 +131,11 @@ if( !nyc.checked && sf.checked === false && se.checked === false && cg.checked =
   messageCheckbox.textContent = "Il faut choisir ! ";
   messageCheckbox.classList.add("error-message-name");
 }
+// Checkbox condition -------------------------------------------------
+if(checkbox.getAttribute(checked)){
+  console.log('vrai');
+}
+
 });
  
 
