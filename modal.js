@@ -25,6 +25,7 @@ let myForm = document.querySelector("#my-form");
 const message = document.querySelector("#message");
 const messageLastName = document.querySelector("#message-2");
 const messageEmail = document.querySelector("#message-3");
+const messageCheckbox = document.querySelector("#message-4");
 const close = document.querySelector(".close");
 
 let date = document.querySelector("#birthdate");
@@ -52,6 +53,16 @@ let Fulldate = year + "-" + month + "-"+ day;
 date.setAttribute("max", Fulldate);
 
 
+let nyc = document.querySelector('#location1');
+let sf = document.querySelector('#location2');
+let se = document.querySelector('#location3');
+let cg = document.querySelector('#location4');
+let bo = document.querySelector('#location5');
+let po = document.querySelector('#location6');
+
+
+
+
 // launch modal event
 modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
 
@@ -67,11 +78,9 @@ function quitModal() {
 myForm.addEventListener('submit', function(e){
 let regex = /^[a-zA-Z-\s]+$/;
 // j'autorise les lettre en minuscule en majuscule les tirets et les espace répété plusieur fois
-// let result = regex.test(firstName);
+
 
 let regexEmail = /[a-z-A-Z0-9]+@+[a-z-A-Z0-9]+.+[a-z-A-Z]/g;
-// let resultEmail = regexEmail.test(email);
-
 
 
 
@@ -113,8 +122,14 @@ if(regexEmail.test(email.value) == false){
   messageEmail.classList.add("error-message-name");
   
 }
+// Checkbox condition ------------------------------------------------
 
-
+if( !nyc.checked && sf.checked === false && se.checked === false && cg.checked === false && bo.checked === false && po.checked === false){
+ 
+  e.preventDefault();
+  messageCheckbox.textContent = "Il faut choisir ! ";
+  messageCheckbox.classList.add("error-message-name");
+}
 });
  
 
