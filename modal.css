@@ -235,7 +235,7 @@ input {
 
 /* subumit avec success */
 .success-sub{
-  height: 200px;
+  height: 500px;
   display: flex;
 justify-content: center;
 align-items: center;
@@ -246,13 +246,25 @@ align-items: center;
   /* je fais disparaître le message du success d'envoie */
 
 }
-
+.div-btn{
+ text-align: center;
+}
+.btn{
+  margin-bottom: 15px;
+  background: #fe142f;
+ border: none;
+  color: #fff;
+  border-radius: 10px;
+  cursor: pointer;
+  padding: 15px 70px;
+  font-size: 16px;
+}
 .message-sub-success{
-  padding: 10px 20px;
-  background: #49DCB1;
+  
   border-radius: 5px;
   color: #fff;
   font-size: 18;
+  text-align: center;
 }
 
 .formData[data-error]::after {

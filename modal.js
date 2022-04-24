@@ -27,7 +27,7 @@ const messageLastName = document.querySelector("#message-2");
 const messageEmail = document.querySelector("#message-3");
 const messageRadiobox = document.querySelector("#message-4");
 const messageCheckbox = document.querySelector("#message-5");
-const close = document.querySelector(".close");
+
 
 let date = document.querySelector("#birthdate");
 // permet d'avoir la date
@@ -49,8 +49,8 @@ if(month < 10){
 }
 // on cree une variable fulldate avec toutes les variable 
 let Fulldate = year + "-" + month + "-"+ day; 
-// console.log(date.getAttribute("max"));
-// settAttribute prend 2 paramettre l'attribut qu'on veut cibler et la valeur par laquelle on veut remplacer  
+
+// setAttribute prend 2 paramettre l'attribut qu'on veut cibler et la valeur par laquelle on veut remplacer  
 date.setAttribute("max", Fulldate);
 
 
@@ -67,6 +67,8 @@ let modalBody = document.querySelector('#my-form');
 
 let submitSuccess = document.querySelector('#div-success-sub');
 // launch modal event
+
+
 modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
 
 // launch modal form
@@ -141,7 +143,8 @@ if(!checkbox.checked){
 }
 
 else{
-  // si toutes les conditions sont remplis alors je fais disparaître le formulaire  
+  // si toutes les conditions sont remplis alors je fais disparaître le formulaire 
+ 
 modalBody.style.display="none";
 // et je fais apparaitre le message  
 submitSuccess.style.display = "block";
