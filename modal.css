@@ -232,6 +232,29 @@ input {
   color: #49DCB1;
   font-size: 13px;
 }
+
+/* subumit avec success */
+.success-sub{
+  height: 200px;
+  display: flex;
+justify-content: center;
+align-items: center;
+
+}
+.div-success-sub{
+  display: none;
+  /* je fais disparaître le message du success d'envoie */
+
+}
+
+.message-sub-success{
+  padding: 10px 20px;
+  background: #49DCB1;
+  border-radius: 5px;
+  color: #fff;
+  font-size: 18;
+}
+
 .formData[data-error]::after {
   content: attr(data-error);
   font-size: 0.4em;

@@ -25,7 +25,8 @@ let myForm = document.querySelector("#my-form");
 const message = document.querySelector("#message");
 const messageLastName = document.querySelector("#message-2");
 const messageEmail = document.querySelector("#message-3");
-const messageCheckbox = document.querySelector("#message-4");
+const messageRadiobox = document.querySelector("#message-4");
+const messageCheckbox = document.querySelector("#message-5");
 const close = document.querySelector(".close");
 
 let date = document.querySelector("#birthdate");
@@ -62,8 +63,9 @@ let po = document.querySelector('#location6');
 
 let checkbox = document.querySelector('#checkbox1');
 
+let modalBody = document.querySelector('#my-form');
 
-
+let submitSuccess = document.querySelector('#div-success-sub');
 // launch modal event
 modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
 
@@ -128,13 +130,23 @@ if(regexEmail.test(email.value) == false){
 if( !nyc.checked && sf.checked === false && se.checked === false && cg.checked === false && bo.checked === false && po.checked === false){
  
   e.preventDefault();
-  messageCheckbox.textContent = "Il faut choisir ! ";
-  messageCheckbox.classList.add("error-message-name");
+  messageRadiobox.textContent = "Il faut choisir ! ";
+  messageRadiobox.classList.add("error-message-name");
 }
 // Checkbox condition -------------------------------------------------
-if(checkbox.getAttribute(checked)){
-  console.log('vrai');
+if(!checkbox.checked){
+  e.preventDefault();
+  messageCheckbox.textContent = "Vous devez accepter nos conditions d'utilisation ";
+  messageCheckbox.classList.add("error-message-name");
 }
+
+else{
+  // si toutes les conditions sont remplis alors je fais disparaître le formulaire  
+modalBody.style.display="none";
+// et je fais apparaitre le message  
+submitSuccess.style.display = "block";
+}
+
 
 });
  

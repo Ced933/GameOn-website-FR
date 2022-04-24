@@ -55,7 +55,12 @@
     <div class="bground">
       <div class="content">
         <span onclick="quitModal()" class="close"></span>
-        <div class="modal-body">
+        <div id="modal-body" class="modal-body">
+          <div id="div-success-sub" class="div-success-sub">
+            <div class="success-sub">
+              <h3 class="message-sub-success">Le formulaire a été envoyé <i class="fas fa-check-circle"></i> </h3>
+            </div>
+          </div>
            <form name="reserve" action="index.html" method="get" id="my-form" ><!--onsubmit="validate();" -->
             <div class="formData">
               <label>Prénom</label><br>
@@ -116,7 +121,9 @@
                 <span class="checkbox-icon"></span>
                 J'ai lu et accepté les conditions d'utilisation.
               </label>
+              
               <br>
+              <div id="message-5"></div>
               <input class="checkbox-input" type="checkbox" id="checkbox2" />
               <label class="checkbox2-label" for="checkbox2">
                 <span class="checkbox-icon"></span>
@@ -125,7 +132,9 @@
               <br>
             </div>
             <input class="btn-submit button" type="submit" value="C'est parti" />
+
           </form>
+
         </div>
       </div>
     </div>
