@@ -80,7 +80,11 @@ function quitModal() {
   modalbg.style.display = "none";
 }
 // Pour enlever le comportement par defautl du button submit 
+
+
+
 myForm.addEventListener('submit', function(e){
+  
 let regex = /^[a-zA-Z-\s]+$/;
 // j'autorise les lettre en minuscule en majuscule les tirets et les espace répété plusieur fois
 
@@ -93,40 +97,58 @@ let regexEmail = /[a-z-A-Z0-9]+@+[a-z-A-Z0-9]+.+[a-z-A-Z]/g;
     if(regex.test(firstName.value) == false){
       e.preventDefault();
       message.textContent = 'Les chiffres et les caractère spéciaux sont interdit';
-      message.classList.add("error-message-name"); 
+      message.classList.add("error-message-name");
+      return 
 }
  
-    if(firstName.value.trim() === '' || firstName.value.length < 2 ){
+    else if(firstName.value.trim() === '' || firstName.value.length < 2 ){
       // si la valeur de l'input est = à vide en retirant les espaces trim() ..  
      e.preventDefault(); 
     message.textContent = 'Remplir le champs, deux lettres minimum';
     message.classList.add("error-message-name");
-    
+    return 
 }
+else{
+  message.textContent = "";
+}
+
 
 // condition lastName -----------------------------------------------------------
 
 if(regex.test(lastName.value) == false){
   e.preventDefault();
   messageLastName.textContent = 'Les chiffres et les caractère spéciaux sont interdit';
-  messageLastName.classList.add("error-message-name"); 
+  messageLastName.classList.add("error-message-name");
+  return  
 }
 
-if(lastName.value.trim() === '' || lastName.value.length < 2 ){
+else if(lastName.value.trim() === '' || lastName.value.length < 2 ){
   // si la valeur de l'input est = à vide en retirant les espaces trim() ..  
  e.preventDefault(); 
  messageLastName.textContent = 'Remplir le champs, deux lettres minimum';
  messageLastName.classList.add("error-message-name");
-
+ return 
 }
+else{
+  messageLastName.textContent = "";
+}
+
+
 // // Email condition ----------------------------------------------------------------
 
 if(regexEmail.test(email.value) == false){
   e.preventDefault();
   messageEmail.textContent = "Ceci n'est pas une adresse email";
   messageEmail.classList.add("error-message-name");
-  
+  return 
 }
+else{
+  messageEmail.textContent = "";
+}
+
+
+
+
 // Radiobox condition ------------------------------------------------
 
 if( !nyc.checked && sf.checked === false && se.checked === false && cg.checked === false && bo.checked === false && po.checked === false){
@@ -134,23 +156,28 @@ if( !nyc.checked && sf.checked === false && se.checked === false && cg.checked =
   e.preventDefault();
   messageRadiobox.textContent = "Il faut choisir ! ";
   messageRadiobox.classList.add("error-message-name");
+  return 
+}
+else{
+  messageRadiobox.textContent = "";
 }
 // Checkbox condition -------------------------------------------------
-if(!checkbox.checked){
+ if(!checkbox.checked){
   e.preventDefault();
   messageCheckbox.textContent = "Vous devez accepter nos conditions d'utilisation ";
   messageCheckbox.classList.add("error-message-name");
+  return 
+}
+else{
+  messageCheckbox.textContent = "";
 }
 
-else{
+
   // si toutes les conditions sont remplis alors je fais disparaître le formulaire 
  
-modalBody.style.display="none";
-// et je fais apparaitre le message  
-submitSuccess.style.display = "block";
-}
-
-
+  myForm.style.display="none";
+  // et je fais apparaitre le message  
+  submitSuccess.style.display = "block";
 });
  
 
