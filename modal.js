@@ -27,6 +27,8 @@ const messageLastName = document.querySelector("#message-2");
 const messageEmail = document.querySelector("#message-3");
 const messageRadiobox = document.querySelector("#message-4");
 const messageCheckbox = document.querySelector("#message-5");
+const messageBirthday = document.querySelector("#message-6");
+const messageQuantity = document.querySelector("#message-7");
 
 
 let date = document.querySelector("#birthdate");
@@ -52,6 +54,14 @@ let Fulldate = year + "-" + month + "-"+ day;
 
 // setAttribute prend 2 paramettre l'attribut qu'on veut cibler et la valeur par laquelle on veut remplacer  
 date.setAttribute("max", Fulldate);
+
+
+
+
+let quantity = document.querySelector('#quantity');
+
+
+
 
 
 let nyc = document.querySelector('#location1');
@@ -146,9 +156,26 @@ else{
   messageEmail.textContent = "";
 }
 
-
-
-
+// date ---------------------------------------------------
+if( !date.value){
+  e.preventDefault();
+  messageBirthday.textContent = "Vous devez entrer votre date de naissance.";
+  messageBirthday.classList.add("error-message-name");
+  return
+}
+else{
+  messageBirthday.textContent = "";
+}
+// number----------------------
+if(!quantity.value){
+  e.preventDefault();
+  messageQuantity.textContent = "Entrez une valeur numérique";
+  messageQuantity.classList.add("error-message-name");
+return
+}
+else{
+  messageQuantity.textContent = "";
+}
 // Radiobox condition ------------------------------------------------
 
 if( !nyc.checked && sf.checked === false && se.checked === false && cg.checked === false && bo.checked === false && po.checked === false){
@@ -172,7 +199,7 @@ else{
   messageCheckbox.textContent = "";
 }
 
-
+e.preventDefault();
   // si toutes les conditions sont remplis alors je fais disparaître le formulaire 
  
   myForm.style.display="none";
