@@ -1,8 +1,3 @@
-
-
-
-
-
 function editNav() {
   var x = document.getElementById("myTopnav");
   if (x.className === "topnav") {
@@ -30,7 +25,22 @@ const messageCheckbox = document.querySelector("#message-5");
 const messageBirthday = document.querySelector("#message-6");
 const messageQuantity = document.querySelector("#message-7");
 
+let quantity = document.querySelector('#quantity');
 
+// launch modal event
+modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
+
+// launch modal form
+function launchModal() {
+  modalbg.style.display = "block";
+}
+// quitter le formulaire grâce à la croix 
+function quitModal() {
+  modalbg.style.display = "none";
+}
+
+
+// ---------------------------------------------- PARTIE CALENDRIER ---------------------------------------
 let date = document.querySelector("#birthdate");
 // permet d'avoir la date
 let dateNow = new Date();
@@ -49,58 +59,38 @@ if(day < 10){
 if(month < 10){
   month ='0'+ month;
 }
-// on cree une variable fulldate avec toutes les variable 
+// On crée une variable fulldate avec toutes les variable 
 let Fulldate = year + "-" + month + "-"+ day; 
 
 // setAttribute prend 2 paramettre l'attribut qu'on veut cibler et la valeur par laquelle on veut remplacer  
 date.setAttribute("max", Fulldate);
 
 
-
-
-let quantity = document.querySelector('#quantity');
-
-
-
-
-
+// ------------------------------------------------------ PARTIE RADIO CHECK -------------------------------------------
 let nyc = document.querySelector('#location1');
 let sf = document.querySelector('#location2');
 let se = document.querySelector('#location3');
 let cg = document.querySelector('#location4');
 let bo = document.querySelector('#location5');
 let po = document.querySelector('#location6');
+// ------------------------------------------------------ PARTIE CHECKBOX -------------------------------------------
 
 let checkbox = document.querySelector('#checkbox1');
 
-let modalBody = document.querySelector('#my-form');
-
+// ------------------------------------------------------ PARTIE MESSAGE SUCCESS -------------------------------------------
+// div avec message success 
 let submitSuccess = document.querySelector('#div-success-sub');
-// launch modal event
 
 
-modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
-
-// launch modal form
-function launchModal() {
-  modalbg.style.display = "block";
-}
-// quitter le formulaire grâce à la croix 
-function quitModal() {
-  modalbg.style.display = "none";
-}
-// Pour enlever le comportement par defautl du button submit 
-
+// ------------------------------------------------------ FONCTION POUR VERIFIER LE FORMULAIRE -------------------------------------------
 
 
 myForm.addEventListener('submit', function(e){
   
 let regex = /^[a-zA-Z-\s]+$/;
-// j'autorise les lettre en minuscule en majuscule les tirets et les espace répété plusieur fois
-
+// J'autorise les lettres en minuscules, en majuscules les tirets et les espaces répétés plusieur fois
 
 let regexEmail = /[a-z-A-Z0-9]+@+[a-z-A-Z0-9]+.+[a-z-A-Z]/g;
-
 
 
 // condition firstName ----------------------------------------------------
@@ -108,6 +98,7 @@ let regexEmail = /[a-z-A-Z0-9]+@+[a-z-A-Z0-9]+.+[a-z-A-Z]/g;
       e.preventDefault();
       message.textContent = 'Les chiffres et les caractère spéciaux sont interdit';
       message.classList.add("error-message-name");
+      // le return ici permet de valider une condition à la fois 
       return 
 }
  
@@ -156,7 +147,7 @@ else{
   messageEmail.textContent = "";
 }
 
-// date ---------------------------------------------------
+// Date condition ---------------------------------------------------
 if( !date.value){
   e.preventDefault();
   messageBirthday.textContent = "Vous devez entrer votre date de naissance.";
@@ -166,7 +157,7 @@ if( !date.value){
 else{
   messageBirthday.textContent = "";
 }
-// number----------------------
+// number condition ----------------------
 if(!quantity.value){
   e.preventDefault();
   messageQuantity.textContent = "Entrez une valeur numérique";
@@ -199,9 +190,8 @@ else{
   messageCheckbox.textContent = "";
 }
 
-e.preventDefault();
+  e.preventDefault();
   // si toutes les conditions sont remplis alors je fais disparaître le formulaire 
- 
   myForm.style.display="none";
   // et je fais apparaitre le message  
   submitSuccess.style.display = "block";
